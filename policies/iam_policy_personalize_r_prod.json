@@ -1,0 +1,19 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "HunteristProd",
+      "Action": "*",
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::hunterist-prod",
+        "arn:aws:s3:::hunterist-prod/*",
+        "arn:aws:sqs:ap-northeast-1:221271379236:hunterist_prod_campaign_util",
+        "arn:aws:sqs:ap-northeast-1:221271379236:hunterist_prod_low_priority_scene_request",
+        "arn:aws:sqs:ap-northeast-1:221271379236:hunterist_prod_low_priority_scene_response",
+        "arn:aws:sqs:ap-northeast-1:221271379236:hunterist_prod_video_scene",
+        "arn:aws:sqs:ap-northeast-1:221271379236:hunterist_prod_video_scene_result"
+      ]
+    }
+  ]
+}
