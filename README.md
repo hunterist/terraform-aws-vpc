@@ -1,4 +1,4 @@
-Hunterist AWS VPC Build By Terraform 
+AWS VPC Build By Terraform 
 ================================================================================
 
 This repository contains a [Terraform](https://www.terraform.io/) project that builds [Scenario 2: VPC with Public and Private Subnets](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Scenario2.html) from the AWS documentation.
