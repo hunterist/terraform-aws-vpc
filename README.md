@@ -35,6 +35,115 @@ AWS Infrastructure
 |                         | SQS        | hunterist_prod_video_scene_result
 
 
+**II. VPC**
+
+2.1 VPC
+| Name               | CIDR Block
+| ------------------ | ----------------
+| Hunterist-Prod-VPC | 10.201.0.0/16
+
+2.2 Subnets
+| Name                       | CIDR Block       | Availability Zone
+| -------------------------- | ---------------- | ----------------- 
+| Hunterist-Prod-Front01     | 10.201.0.0/24    | ap-northeast-1a 
+| Hunterist-Prod-Front02     | 10.201.1.0/24    | ap-northeast-1c
+| Hunterist-Prod-RDS01       | 10.201.2.0/24    | ap-northeast-1a
+| Hunterist-Prod-RDS02       | 10.201.3.0/24    | ap-northeast-1c
+| Hunterist-Prod-Pipeline01  | 10.201.4.0/24    | ap-northeast-1a
+| Hunterist-Prod-Pipeline02  | 10.201.5.0/24    | ap-northeast-1c
+
+2.3 Gateways
+| Name                       | Type
+| -------------------------- | ----------------------
+| Hunterist-Igw-Prod-VPC     | Internet Gateway
+
+2.4 Route Tables
+| Name                       | Destination      | Target               
+| -------------------------- | ---------------- | ------------------------|
+| Hunterist-Prod-Public-RT   | 0.0.0.0/0        | Hunterist-Igw-Prod-VPC  
+
+
+2.5 Network NACL
+| Name                       | Inbound          | Outbound                | Subnets
+| -------------------------- | ---------------- | ------------------------| ----------------------
+| Hunterist-Prod-Public-RT   |                  |                         | Hunterist-Prod-Front01
+                                                                          | Hunterist-Prod-Front02
+                                                                          | Hunterist-Prod-RDS01
+                                                                          | Hunterist-Prod-RDS02
+                                                                          | Hunterist-Prod-Pipeline01
+                                                                          | Hunterist-Prod-Pipeline02
+
+2.6 Security Group
+| Name                       | Inbound Rules    | Outbound Rules          
+| -------------------------- | ---------------- | ------------------------
+| Hunterist-Prod-Front-SG    |                  |                         
+| Hunterist-Prod-RDS-SG      |                  |      
+| Hunterist-Prod-Pipeline-SG |                  |                          
+| Hunterist-Prod-Front-ELB   |                  |       
+
+**III. EC2**
+3.1 Front01
+| Item            | Value          
+| --------------- | ----------------
+| Name            | Hunterist-Prod-Front01
+| Instance Type   | m3.medium      
+| Elastic IP      | 52.197.205.111      
+| OS              | Ubuntu 14.04
+| SSH User        | ubuntu
+| SSH Key Pair    | hunterist-prod-front01
+| SSH Port        | 22
+| IAM Role        | hunterist-prod
+| Security Group  | Hunterist-Prod-Front-SG
+
+3.2 Front02
+| Item            | Value          
+| --------------- | ----------------
+| Name            | Hunterist-Prod-Front01
+| Instance Type   | m3.medium     
+| Elastic IP      | 52.197.205.112      
+| OS              | Ubuntu 14.04
+| SSH User        | ubuntu
+| SSH Key Pair    | hunterist-prod-front02
+| SSH Port        | 22
+| IAM Role        | hunterist-prod
+| Security Group  | Hunterist-Prod-Front-SG
+
+3.3 Pipeline01
+| Item            | Value          
+| --------------- | ----------------
+| Name            | Hunterist-Prod-Pipeline01
+| Instance Type   | c4.xlarge     
+| Elastic IP      | 52.197.205.113      
+| OS              | Window
+| RDP User        | Administrator
+| RDP Password    | 
+| RDP Port        | 3389
+| IAM Role        | hunterist-prod
+| Security Group  | Hunterist-Prod-Pipeline-SG
+
+3.4 Pipeline02
+| Item            | Value          
+| --------------- | ----------------
+| Name            | Hunterist-Prod-Pipeline02
+| Instance Type   | c4.xlarge     
+| Elastic IP      | 52.197.205.114      
+| OS              | Window
+| RDP User        | Administrator
+| RDP Password    | 
+| RDP Port        | 3389
+| IAM Role        | hunterist-prod
+| Security Group  | Hunterist-Prod-Pipeline-SG
+
+**IV. RDS**
+
+**V. S3**
+
+**VI. SQS**
+
+**VII. EIP** (We dont need using these ip if we already have ELB)
+
+**VIII. ELB**
+
 
 Running
 --------------------------------------------------------------------------------
