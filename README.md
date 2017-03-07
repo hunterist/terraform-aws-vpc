@@ -72,11 +72,11 @@ AWS Infrastructure
 | Name                       | Inbound          | Outbound                | Subnets
 | -------------------------- | ---------------- | ------------------------| ----------------------
 | Hunterist-Prod-Public-RT   |                  |                         | Hunterist-Prod-Front01
-                                                                          | Hunterist-Prod-Front02
-                                                                          | Hunterist-Prod-RDS01
-                                                                          | Hunterist-Prod-RDS02
-                                                                          | Hunterist-Prod-Pipeline01
-                                                                          | Hunterist-Prod-Pipeline02
+|                            |                  |                         | Hunterist-Prod-Front02
+|                            |                  |                         | Hunterist-Prod-RDS01
+|                            |                  |                         | Hunterist-Prod-RDS02
+|                            |                  |                         | Hunterist-Prod-Pipeline01
+|                            |                  |                         | Hunterist-Prod-Pipeline02
 
 2.6 Security Group
 
@@ -86,6 +86,7 @@ AWS Infrastructure
 | Hunterist-Prod-RDS-SG      |                  |      
 | Hunterist-Prod-Pipeline-SG |                  |                          
 | Hunterist-Prod-Front-ELB   |                  |       
+
 
 **III. EC2**
 
@@ -145,15 +146,62 @@ AWS Infrastructure
 | IAM Role        | hunterist-prod
 | Security Group  | Hunterist-Prod-Pipeline-SG
 
+
 **IV. RDS**
 
-**V. S3**
+4.1 Master
 
-**VI. SQS**
+| Item               | Value          
+| ------------------ | ----------------
+| Replication Role   | Master
+| Instance Type      | db.r3.large     
+| Engine             | PostgreSQL 9.5.4  
+| Endpoint           | 
+| Port               | 5432
+| Username           | hunterist
+| DB Name            | hunterist
+| DB Password        | 
+| Storage            | 32GB
+| Multi AZ           | No
+| Encryption Enabled | Yes
+| Security Group     | Hunterist-Prod-RDS-SG
+
+4.1 Replica
+
+| Item               | Value          
+| ------------------ | ----------------
+| Replication Role   | Replica
+| Instance Type      | db.m4.large     
+| Engine             | PostgreSQL 9.5.4  
+| Endpoint           | 
+| Port               | 5432
+| Username           | hunterist
+| DB Name            | hunterist
+| DB Password        | 
+| Storage            | 32GB
+| Multi AZ           | No
+| Encryption Enabled | Yes
+| Security Group     | Hunterist-Prod-RDS-SG
+
+
+**V. S3** (please check source code to understand)
+
+
+**VI. SQS** (please check source code to understand)
+
 
 **VII. EIP** (We dont need using these ip if we already have ELB)
 
+
 **VIII. ELB**
+
+| Item               | Value          
+| ------------------ | ----------------
+| Name               | Hunterist-Prod-FrontELB
+| Instances          | Hunterist-Prod-Front01, Hunterist-Prod-Front02
+| Subnets            | Hunterist-Prod-Front01, Hunterist-Prod-Front02
+| Port On ELB        | 80, 443
+| Port On Instances  | 80
 
 
 Running
