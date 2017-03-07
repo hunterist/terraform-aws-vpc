@@ -23,6 +23,7 @@ AWS Infrastructure
 | -------------- | ---------------- | ----------------- | ---------------------
 | hunterist-prod | YOUR ACCESS KEY  | YOUR SECRET KEY   | Hunterist-Prod-Policy
 
+
 1.2 Policy
 
 | Name                    | Type       | Resource
@@ -43,6 +44,7 @@ AWS Infrastructure
 | ------------------ | ----------------
 | Hunterist-Prod-VPC | 10.201.0.0/16
 
+
 2.2 Subnets
 
 | Name                       | CIDR Block       | Availability Zone
@@ -54,11 +56,13 @@ AWS Infrastructure
 | Hunterist-Prod-Pipeline01  | 10.201.4.0/24    | ap-northeast-1a
 | Hunterist-Prod-Pipeline02  | 10.201.5.0/24    | ap-northeast-1c
 
+
 2.3 Gateways
 
 | Name                       | Type
 | -------------------------- | ----------------------
 | Hunterist-Igw-Prod-VPC     | Internet Gateway
+
 
 2.4 Route Tables
 
@@ -77,6 +81,7 @@ AWS Infrastructure
 |                            |                  |                         | Hunterist-Prod-RDS02
 |                            |                  |                         | Hunterist-Prod-Pipeline01
 |                            |                  |                         | Hunterist-Prod-Pipeline02
+
 
 2.6 Security Group
 
@@ -104,6 +109,7 @@ AWS Infrastructure
 | IAM Role        | hunterist-prod
 | Security Group  | Hunterist-Prod-Front-SG
 
+
 3.2 Front02
 
 | Item            | Value          
@@ -118,6 +124,7 @@ AWS Infrastructure
 | IAM Role        | hunterist-prod
 | Security Group  | Hunterist-Prod-Front-SG
 
+
 3.3 Pipeline01
 
 | Item            | Value          
@@ -131,6 +138,7 @@ AWS Infrastructure
 | RDP Port        | 3389
 | IAM Role        | hunterist-prod
 | Security Group  | Hunterist-Prod-Pipeline-SG
+
 
 3.4 Pipeline02
 
@@ -165,6 +173,7 @@ AWS Infrastructure
 | Multi AZ           | No
 | Encryption Enabled | Yes
 | Security Group     | Hunterist-Prod-RDS-SG
+
 
 4.1 Replica
 
