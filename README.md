@@ -199,7 +199,7 @@ AWS Infrastructure
 **VI. SQS** (please check source code to understand)
 
 
-**VII. EIP** (We dont need using these ip if we already have ELB & Bastion server)
+**VII. EIP** (We dont need using these ips if we already have ELB & Bastion server)
 
 
 **VIII. ELB**
